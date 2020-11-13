@@ -1,0 +1,15 @@
+.header {
+  border-bottom: solid 1px black;
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+.header img {
+  width: 100px;
+}
+.header button {
+  cursor: pointer;
+}

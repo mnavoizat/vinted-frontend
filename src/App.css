@@ -1,1 +1,5 @@
 /* Other rules */
+.container {
+  width: 1330px;
+  margin: 0 auto;
+}

@@ -1,0 +1,15 @@
+.article {
+  margin: 5px;
+  width: calc((100% - 5 * 10px) / 5);
+}
+.article img {
+  width: 100%;
+  object-fit: cover;
+}
+.article .infos {
+  height: 50px;
+}
+.link {
+  text-decoration: none;
+  color: black;
+}
