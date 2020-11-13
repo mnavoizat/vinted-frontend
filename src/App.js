@@ -8,10 +8,23 @@ import Offer from "./containers/Offer";
 import Header from "./components/Transverse/Header";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch, faTimes, faEye } from "@fortawesome/free-solid-svg-icons";
-library.add(faSearch, faTimes, faEye);
+import {
+  faSearch,
+  faTimes,
+  faEye,
+  faCaretLeft,
+  faCaretRight,
+  faCaretDown,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch, faTimes, faEye, faCaretLeft, faCaretRight, faCaretDown);
 
 function App() {
+  const [search, setSearch] = useState({
+    keyWord: "",
+    priceMin: "",
+    priceMax: "",
+    sort: "",
+  });
   const [token, setToken] = useState(Cookie.get("userToken") || null);
 
   const setUser = (tokenToSet) => {
@@ -26,13 +39,18 @@ function App() {
 
   return (
     <Router>
-      <Header setUser={setUser} token={token} />
+      <Header
+        setUser={setUser}
+        token={token}
+        search={search}
+        setSearch={setSearch}
+      />
       <Switch>
         <Route path="/offer/:id">
           <Offer />
         </Route>
         <Route path="/">
-          <Home />
+          <Home search={search} />
         </Route>
       </Switch>
     </Router>

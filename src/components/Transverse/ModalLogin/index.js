@@ -29,8 +29,12 @@ const ModalLogin = ({
           password,
         }
       );
-      setUser(response.data.token);
-      setDisplayModalLogin(false);
+      if (response.data.token) {
+        setUser(response.data.token);
+        setDisplayModalLogin(false);
+      } else {
+        alert("Une erreur est survenue");
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -55,6 +59,7 @@ const ModalLogin = ({
               placeholder="Adresse email"
               onChange={handleEmailChange}
               value={email}
+              className="input"
             />
             <div className="password">
               <input
@@ -64,6 +69,7 @@ const ModalLogin = ({
                 //className={submit === 1 ? "error" : ""}
                 onChange={handlePasswordChange}
                 value={password}
+                className="input"
               />
               <FontAwesomeIcon
                 icon="eye"
@@ -73,7 +79,12 @@ const ModalLogin = ({
                 }}
               />
             </div>
-            <input type="submit" id="submit" value="Se connecter" />
+            <input
+              type="submit"
+              id="submit"
+              value="Se connecter"
+              className="input"
+            />
           </form>
           <div
             onClick={() => {

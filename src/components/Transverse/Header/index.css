@@ -13,3 +13,32 @@
 .header button {
   cursor: pointer;
 }
+.header .form {
+  display: flex;
+}
+.header .price-dev {
+  background-color: white;
+  position: absolute;
+  height: 100px;
+  width: 180px;
+  border: solid 1px black;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.header .min-max {
+  display: flex;
+  justify-content: space-evenly;
+}
+.header .min-max input {
+  width: 60px;
+}
+.header .sort {
+  display: flex;
+  flex-direction: column;
+}
+.header .sort div {
+  display: flex;
+  margin-left: 20px;
+}

@@ -1,0 +1,36 @@
+.page-index {
+  display: flex;
+  justify-content: flex-end;
+}
+.page-index button {
+  padding: 5px 10px;
+  font-size: 20px;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+.page-index > button:hover {
+  background-color: white;
+  color: #0aaeb7;
+}
+.current-page {
+  background-color: grey;
+}
+.other-pages {
+  background-color: #0aaeb7;
+}
+.page-index .icon {
+  font-size: 35px;
+  color: #0aaeb7;
+  padding: 10px;
+  cursor: pointer;
+}
+.page-index .visible {
+  visibility: visible;
+}
+.page-index .visible {
+  visibility: hidden;
+}

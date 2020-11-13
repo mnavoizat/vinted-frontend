@@ -13,6 +13,7 @@ const ModalSignup = ({
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [visible, setVisible] = useState(false);
+  const [samePasswords, setSamePasswords] = useState(true);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -39,8 +40,14 @@ const ModalSignup = ({
             password,
           }
         );
-        setUser(response.data.token);
-        setDisplayModalSignup(false);
+        if (response.data.token) {
+          setUser(response.data.token);
+          setDisplayModalSignup(false);
+        } else {
+          alert("Une erreur est survenue");
+        }
+      } else {
+        setSamePasswords(false);
       }
     } catch (error) {
       console.log(error.message);
@@ -66,6 +73,7 @@ const ModalSignup = ({
               placeholder="Nom d'utilisateur"
               onChange={handleUsernameChange}
               value={username}
+              className="input"
             />
             <input
               type="email"
@@ -73,15 +81,16 @@ const ModalSignup = ({
               placeholder="Email"
               onChange={handleEmailChange}
               value={email}
+              className="input"
             />
             <div className="password">
               <input
                 type={visible ? "text" : "password"}
                 placeholder="Mot de passe"
                 name="password"
-                //className={submit === 1 ? "error" : ""}
                 onChange={handlePasswordChange}
                 value={password}
+                className={`input ${!samePasswords ? "error" : ""}`}
               />
               <FontAwesomeIcon
                 icon="eye"
@@ -96,9 +105,9 @@ const ModalSignup = ({
                 type={visible ? "text" : "password"}
                 placeholder="Confirmez votre mot de passe"
                 name="confirmPassword"
-                //className={submit === 1 ? "error" : ""}
                 onChange={handleConfirmPasswordChange}
                 value={confirmPassword}
+                className={`input ${!samePasswords ? "error" : ""}`}
               />
               <FontAwesomeIcon
                 icon="eye"
@@ -108,7 +117,17 @@ const ModalSignup = ({
                 }}
               />
             </div>
-            <input type="submit" id="submit" value="S'inscrire" />
+            {!samePasswords && (
+              <p className="error-message">
+                Les mots de passe ne sont pas identiques
+              </p>
+            )}
+            <input
+              type="submit"
+              id="submit"
+              value="S'inscrire"
+              className="input"
+            />
           </form>
           <div
             onClick={() => {
