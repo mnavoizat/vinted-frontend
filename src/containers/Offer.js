@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import OfferComp from "../components/Offer/OfferComp";
 
 const Offer = () => {
+  document.body.style = "background: #eaedef;";
+
   const { id } = useParams();
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);

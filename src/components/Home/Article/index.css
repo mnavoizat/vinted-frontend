@@ -9,7 +9,28 @@
 .article .infos {
   height: 50px;
 }
-.link {
+.article .link {
   text-decoration: none;
+}
+.article .link > div {
+  color: rgb(161, 159, 159);
+  font-size: 12px;
+  line-height: 16px;
+  margin-left: 10px;
+}
+.article .price {
   color: black;
+  font-size: 14px;
+}
+.article .user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.article .user img {
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
 }

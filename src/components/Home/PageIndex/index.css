@@ -1,13 +1,14 @@
 .page-index {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 .page-index button {
-  padding: 5px 10px;
-  font-size: 20px;
+  padding: 4px 8px;
+  font-size: 18px;
   color: white;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   cursor: pointer;
   outline: none;
   border: none;

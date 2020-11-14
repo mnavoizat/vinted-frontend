@@ -6,6 +6,8 @@ import Main from "../components/Home/Main";
 import PageIndex from "../components/Home/PageIndex";
 
 const Home = ({ search }) => {
+  document.body.style = "background: white;";
+
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [pageIndex, setPageIndex] = useState(1);

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import logo from "../../../assets/Vinted_logo.png";
 
 import ModalSignup from "../ModalSignup";
 import ModalLogin from "../ModalLogin";
 
-const Header = ({ setUser, token, search, setSearch }) => {
+const Header = ({ setUser, token, setSearch }) => {
   const [displayModalSignup, setDisplayModalSignup] = useState(false);
   const [displayModalLogin, setDisplayModalLogin] = useState(false);
   const [displayPrice, setDisplayPrice] = useState(false);
@@ -15,7 +16,6 @@ const Header = ({ setUser, token, search, setSearch }) => {
   const [priceMax, setPriceMax] = useState("");
   const [ascendant, setAscendant] = useState(false);
   const [descendant, setDescendant] = useState(false);
-
   const [sort, setSort] = useState("");
 
   const handleAscendant = (event) => {
@@ -54,10 +54,10 @@ const Header = ({ setUser, token, search, setSearch }) => {
     <div className="header">
       <div className="container">
         <Link to="/">
-          <img src="Vinted_logo.png" alt="logo-vinted" />
+          <img src={logo} alt="logo-vinted" />
         </Link>
         <form onSubmit={handleSubmit} className="form">
-          <button type="submit">
+          <button type="submit" className="search-button">
             <FontAwesomeIcon icon="search" />
           </button>
           <input
@@ -69,12 +69,14 @@ const Header = ({ setUser, token, search, setSearch }) => {
             onChange={(event) => {
               setKeyWord(event.target.value);
             }}
+            className="search"
           />
           <div className="price">
             <button
               onClick={() => {
                 displayPrice ? setDisplayPrice(false) : setDisplayPrice(true);
               }}
+              className="search-button"
             >
               <span>Prix</span> <FontAwesomeIcon icon="caret-down" />
             </button>
@@ -132,6 +134,7 @@ const Header = ({ setUser, token, search, setSearch }) => {
               onClick={() => {
                 setUser(null);
               }}
+              className="deconnect"
             >
               Se déconnecter
             </button>
@@ -141,6 +144,7 @@ const Header = ({ setUser, token, search, setSearch }) => {
                 onClick={() => {
                   setDisplayModalSignup(true);
                 }}
+                className="logSign"
               >
                 S'inscrire
               </button>
@@ -148,13 +152,14 @@ const Header = ({ setUser, token, search, setSearch }) => {
                 onClick={() => {
                   setDisplayModalLogin(true);
                 }}
+                className="logSign"
               >
                 Se connecter
               </button>
             </>
           )}
         </div>
-        <button>Vends tes articles</button>
+        <button className="sell">Vends tes articles</button>
       </div>
       {displayModalSignup && (
         <ModalSignup
