@@ -44,6 +44,9 @@ function App() {
         <Route path="/offer/:id">
           <Offer />
         </Route>
+        <Route path="/home/:page">
+          <Home search={search} />
+        </Route>
         <Route path="/">
           <Home search={search} />
         </Route>

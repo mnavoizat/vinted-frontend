@@ -33,6 +33,7 @@ const ModalLogin = ({
         setUser(response.data.token);
         setDisplayModalLogin(false);
       } else {
+        console.log("erreur");
         alert("Une erreur est survenue");
       }
     } catch (error) {

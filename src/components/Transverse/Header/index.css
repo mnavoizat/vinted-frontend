@@ -40,6 +40,9 @@
   height: 18px;
   margin-top: 5px;
 }
+.header .price-dev input:checked {
+  background-color: #0aaeb7;
+}
 .header .min-max {
   display: flex;
   justify-content: space-evenly;
@@ -123,4 +126,10 @@
 .header .deconnect:hover {
   background-color: white;
   color: #c2185a;
+}
+.header .visible {
+  visibility: visible;
+}
+.header .hidden {
+  visibility: hidden;
 }

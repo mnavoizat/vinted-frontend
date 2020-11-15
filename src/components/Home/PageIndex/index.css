@@ -13,7 +13,7 @@
   outline: none;
   border: none;
 }
-.page-index > button:hover {
+.page-index button:hover {
   background-color: white;
   color: #0aaeb7;
 }

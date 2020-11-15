@@ -3,6 +3,7 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../../../assets/Vinted_logo.png";
+import { useHistory } from "react-router-dom";
 
 import ModalSignup from "../ModalSignup";
 import ModalLogin from "../ModalLogin";
@@ -17,6 +18,8 @@ const Header = ({ setUser, token, setSearch }) => {
   const [ascendant, setAscendant] = useState(false);
   const [descendant, setDescendant] = useState(false);
   const [sort, setSort] = useState("");
+
+  let history = useHistory();
 
   const handleAscendant = (event) => {
     if (event.target.checked) {
@@ -48,6 +51,7 @@ const Header = ({ setUser, token, setSearch }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setSearch({ keyWord, priceMin, priceMax, sort });
+    history.push("/");
   };
 
   return (
@@ -80,52 +84,50 @@ const Header = ({ setUser, token, setSearch }) => {
             >
               <span>Prix</span> <FontAwesomeIcon icon="caret-down" />
             </button>
-            {displayPrice && (
-              <div className="price-dev">
-                <div className="min-max">
-                  <div>
-                    <p>Prix min</p>
-                    <input
-                      type="text"
-                      placeholder="€"
-                      value={priceMin}
-                      onChange={(event) => {
-                        setPriceMin(event.target.value);
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <p>Prix max</p>
-                    <input
-                      type="text"
-                      placeholder="€"
-                      value={priceMax}
-                      onChange={(event) => {
-                        setPriceMax(event.target.value);
-                      }}
-                    />
-                  </div>
+            <div className={`price-dev ${displayPrice ? "visible" : "hidden"}`}>
+              <div className="min-max">
+                <div>
+                  <p>Prix min</p>
+                  <input
+                    type="text"
+                    placeholder="€"
+                    value={priceMin}
+                    onChange={(event) => {
+                      setPriceMin(event.target.value);
+                    }}
+                  />
                 </div>
-                <div className="sort">
-                  <div>
-                    <input
-                      type="checkbox"
-                      onChange={handleAscendant}
-                      checked={ascendant}
-                    />
-                    <p>ordre croissant</p>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      onChange={handleDescendant}
-                      checked={descendant}
-                    />
-                    <p>ordre décroissant</p>
-                  </div>
+                <div>
+                  <p>Prix max</p>
+                  <input
+                    type="text"
+                    placeholder="€"
+                    value={priceMax}
+                    onChange={(event) => {
+                      setPriceMax(event.target.value);
+                    }}
+                  />
                 </div>
               </div>
-            )}
+              <div className="sort">
+                <div>
+                  <input
+                    type="checkbox"
+                    onChange={handleAscendant}
+                    checked={ascendant}
+                  />
+                  <p>ordre croissant</p>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    onChange={handleDescendant}
+                    checked={descendant}
+                  />
+                  <p>ordre décroissant</p>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
         <div>
