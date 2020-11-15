@@ -21,7 +21,7 @@
   object-fit: cover;
 }
 .container-block {
-  width: 1130px;
+  max-width: 1130px;
   margin: 0 auto;
   position: relative;
   top: -350px;
@@ -37,6 +37,7 @@
   padding: 30px;
   box-sizing: border-box;
   border-radius: 5px;
+  margin-left: 5px;
 }
 .block button {
   cursor: pointer;
