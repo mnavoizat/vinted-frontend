@@ -34,3 +34,13 @@
   border-radius: 50%;
   margin-right: 10px;
 }
+@media (max-width: 1000px) {
+  .article {
+    width: calc((100% - 4 * 10px) / 4);
+  }
+}
+@media (max-width: 800px) {
+  .article {
+    width: calc((100% - 3 * 10px) / 3);
+  }
+}

@@ -1,8 +1,16 @@
 /* Other rules */
 .container {
-  width: 1130px;
+  max-width: 1130px;
   margin: 0 auto;
 }
 body {
   font-family: "Roboto", sans-serif;
+}
+.loader {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
 }

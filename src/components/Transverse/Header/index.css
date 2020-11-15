@@ -4,6 +4,7 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  min-width: 700px;
 }
 .header .container {
   display: flex;
@@ -66,6 +67,7 @@
   background-color: white;
   padding: 4px 8px;
   margin: 0 10px;
+  outline: none;
 }
 .header .logSign:hover {
   border: solid 2px #0aaeb7;
@@ -80,6 +82,7 @@
   background-color: #0aaeb7;
   padding: 4px 8px;
   margin: 0 10px;
+  outline: none;
 }
 .header .sell:hover {
   border: solid 2px #0aaeb7;
@@ -91,6 +94,7 @@
   border: none;
   height: 30px;
   outline: none;
+  width: 200px;
 }
 .header .search-button {
   background-color: #f5f6f7;
@@ -114,6 +118,7 @@
   color: white;
   padding: 4px 8px;
   margin: 0 10px;
+  outline: none;
 }
 .header .deconnect:hover {
   background-color: white;

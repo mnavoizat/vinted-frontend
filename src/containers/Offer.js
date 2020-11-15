@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import OfferComp from "../components/Offer/OfferComp";
 
@@ -27,7 +29,9 @@ const Offer = () => {
   }, [id]);
 
   return isLoading ? (
-    <div>en cours de chargement...</div>
+    <div className="loader">
+      <Loader type="Puff" color="#0aaeb7" height={100} width={100} />
+    </div>
   ) : (
     <div>
       <OfferComp article={article} />
