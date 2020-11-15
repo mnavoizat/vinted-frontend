@@ -1,7 +1,14 @@
 .page-index {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+}
+.page-index > div:last-child {
+  display: flex;
+  align-items: center;
+}
+.page-index .results {
+  color: #0aaeb7;
 }
 .page-index button {
   padding: 4px 8px;

@@ -11,32 +11,35 @@ const PageIndex = ({ page, pageTot }) => {
 
   return (
     <div className="page-index container">
-      {page > 1 && (
-        <Link to={`/home/${page - 1}`}>
-          <FontAwesomeIcon icon="caret-left" className="icon" />
-        </Link>
-      )}
-      {pages.map((element, index) => {
-        return (
-          <Link key={index} to={`/home/${index + 1}`}>
-            <button
-              className={
-                index + 1 === Number(page) ? "current-page" : "other-pages"
-              }
-            >
-              {element}
-            </button>
+      <div className="results">{pageTot} resultats trouvés</div>
+      <div>
+        {page > 1 && (
+          <Link to={`/home/${page - 1}`}>
+            <FontAwesomeIcon icon="caret-left" className="icon" />
           </Link>
-        );
-      })}
-      <Link to={`/home/${page + 1}`}>
-        <FontAwesomeIcon
-          icon="caret-right"
-          className={`icon ${
-            page < Math.ceil(pageTot / 8) ? "unvisible" : "visible"
-          }`}
-        />
-      </Link>
+        )}
+        {pages.map((element, index) => {
+          return (
+            <Link key={index} to={`/home/${index + 1}`}>
+              <button
+                className={
+                  index + 1 === Number(page) ? "current-page" : "other-pages"
+                }
+              >
+                {element}
+              </button>
+            </Link>
+          );
+        })}
+        <Link to={`/home/${page + 1}`}>
+          <FontAwesomeIcon
+            icon="caret-right"
+            className={`icon ${
+              page < Math.ceil(pageTot / 8) ? "unvisible" : "visible"
+            }`}
+          />
+        </Link>
+      </div>
     </div>
   );
 };

@@ -62,7 +62,7 @@ const Header = ({ setUser, token, setSearch }) => {
         </Link>
         <form onSubmit={handleSubmit} className="form">
           <button type="submit" className="search-button">
-            <FontAwesomeIcon icon="search" />
+            <FontAwesomeIcon icon="search" /> <span>Go !</span>
           </button>
           <input
             type="text"
