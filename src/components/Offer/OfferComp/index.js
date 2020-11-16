@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import userLogo from "../../../assets/user-logo.jpg";
 
 const OfferComp = ({ article }) => {
   console.log(article);
@@ -9,18 +10,19 @@ const OfferComp = ({ article }) => {
     <div className="offer-comp">
       <div className="container">
         <div>
-          {/* <div>
-            <img src={article.product_image.secure_url} alt="article" />
-          </div> */}
-          <Carousel className="carousel" showThumbs="false">
-            {article.product_pictures.map((element, index) => {
-              return (
-                <div key={index}>
-                  <img src={element.secure_url} alt="" />
-                </div>
-              );
-            })}
-          </Carousel>
+          {article.product_pictures.length !== 0 ? (
+            <Carousel className="carousel" showThumbs="false">
+              {article.product_pictures.map((element, index) => {
+                return (
+                  <div key={index}>
+                    <img src={element.secure_url} alt="" />
+                  </div>
+                );
+              })}
+            </Carousel>
+          ) : (
+            <img src={article.product_image.secure_url} alt="" />
+          )}
         </div>
         <div className="infos">
           <div>
@@ -40,7 +42,11 @@ const OfferComp = ({ article }) => {
             <h2>{article.product_name}</h2>
             <span className="style1">{article.product_description}</span>
             <div className="user">
-              <img src={article.owner.account.avatar.secure_url} alt="" />
+              {article.owner.account.avatar ? (
+                <img src={article.owner.account.avatar.secure_url} alt="" />
+              ) : (
+                <img src={userLogo} alt="" />
+              )}
               <span className="style2">{article.owner.account.username}</span>
             </div>
           </div>
