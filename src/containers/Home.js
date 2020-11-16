@@ -25,9 +25,8 @@ const Home = ({ search }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=8&title=${search.keyWord}&priceMin=${search.priceMin}&priceMax=${search.priceMax}&sort=${search.sort}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=15&title=${search.keyWord}&priceMin=${search.priceMin}&priceMax=${search.priceMax}&sort=${search.sort}`
         );
-        console.log("page:", page);
 
         setArticles(response.data.offers);
         setPageTot(response.data.count);

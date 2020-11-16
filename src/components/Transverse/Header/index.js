@@ -8,9 +8,14 @@ import { useHistory } from "react-router-dom";
 import ModalSignup from "../ModalSignup";
 import ModalLogin from "../ModalLogin";
 
-const Header = ({ setUser, token, setSearch }) => {
+const Header = ({
+  setUser,
+  token,
+  setSearch,
+  displayModalLogin,
+  setDisplayModalLogin,
+}) => {
   const [displayModalSignup, setDisplayModalSignup] = useState(false);
-  const [displayModalLogin, setDisplayModalLogin] = useState(false);
   const [displayPrice, setDisplayPrice] = useState(false);
   const [keyWord, setKeyWord] = useState("");
   const [priceMin, setPriceMin] = useState("");
@@ -61,7 +66,7 @@ const Header = ({ setUser, token, setSearch }) => {
           <img src={logo} alt="logo-vinted" />
         </Link>
         <form onSubmit={handleSubmit} className="form">
-          <button type="submit" className="search-button">
+          <button type="submit" className="search-button but1">
             <FontAwesomeIcon icon="search" /> <span>Go !</span>
           </button>
           <input
@@ -80,7 +85,8 @@ const Header = ({ setUser, token, setSearch }) => {
               onClick={() => {
                 displayPrice ? setDisplayPrice(false) : setDisplayPrice(true);
               }}
-              className="search-button"
+              className="search-button but2"
+              type="button"
             >
               <span>Prix</span> <FontAwesomeIcon icon="caret-down" />
             </button>
@@ -161,7 +167,9 @@ const Header = ({ setUser, token, setSearch }) => {
             </>
           )}
         </div>
-        <button className="sell">Vends tes articles</button>
+        <Link to="/publish">
+          <button className="sell">Vends tes articles</button>
+        </Link>
       </div>
       {displayModalSignup && (
         <ModalSignup

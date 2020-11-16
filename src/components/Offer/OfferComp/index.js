@@ -21,7 +21,11 @@ const OfferComp = ({ article }) => {
               })}
             </Carousel>
           ) : (
-            <img src={article.product_image.secure_url} alt="" />
+            <img
+              className="default-image"
+              src={article.product_image.secure_url}
+              alt=""
+            />
           )}
         </div>
         <div className="infos">

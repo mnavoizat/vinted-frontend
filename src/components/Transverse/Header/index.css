@@ -107,10 +107,10 @@
   cursor: pointer;
   outline: none;
 }
-.header .search-button:first-child {
+.header .but1 {
   border-radius: 5px 0 0 5px;
 }
-.header .search-button:last-child {
+.header .but2 {
   border-radius: 0 5px 5px 0;
 }
 .header .deconnect {

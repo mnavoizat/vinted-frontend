@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import "./index.css";
+import { useHistory } from "react-router-dom";
 
 const ModalLogin = ({
   setDisplayModalLogin,
@@ -11,6 +12,8 @@ const ModalLogin = ({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
+
+  let history = useHistory();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -47,6 +50,7 @@ const ModalLogin = ({
             icon="times"
             onClick={() => {
               setDisplayModalLogin(false);
+              history.push("/");
             }}
             className="cross"
           />

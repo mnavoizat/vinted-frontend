@@ -6,6 +6,7 @@ import Cookie from "js-cookie";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import Header from "./components/Transverse/Header";
+import Publish from "./containers/Publish";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -25,6 +26,8 @@ function App() {
     priceMax: "",
     sort: "",
   });
+  const [displayModalLogin, setDisplayModalLogin] = useState(false);
+
   const [token, setToken] = useState(Cookie.get("userToken") || null);
 
   const setUser = (tokenToSet) => {
@@ -39,8 +42,17 @@ function App() {
 
   return (
     <Router>
-      <Header setUser={setUser} token={token} setSearch={setSearch} />
+      <Header
+        setUser={setUser}
+        token={token}
+        setSearch={setSearch}
+        displayModalLogin={displayModalLogin}
+        setDisplayModalLogin={setDisplayModalLogin}
+      />
       <Switch>
+        <Route path="/publish">
+          <Publish setDisplayModalLogin={setDisplayModalLogin} />
+        </Route>
         <Route path="/offer/:id">
           <Offer />
         </Route>

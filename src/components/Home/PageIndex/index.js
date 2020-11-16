@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const PageIndex = ({ page, pageTot }) => {
   const pages = [];
-  for (let i = 1; i <= Math.ceil(pageTot / 8); i++) {
+  for (let i = 1; i <= Math.ceil(pageTot / 15); i++) {
     pages.push(i);
   }
 
@@ -35,7 +35,7 @@ const PageIndex = ({ page, pageTot }) => {
           <FontAwesomeIcon
             icon="caret-right"
             className={`icon ${
-              page < Math.ceil(pageTot / 8) ? "unvisible" : "visible"
+              page < Math.ceil(pageTot / 15) ? "unvisible" : "visible"
             }`}
           />
         </Link>

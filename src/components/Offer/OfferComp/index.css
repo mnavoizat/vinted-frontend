@@ -72,3 +72,8 @@
   max-width: 470px;
   max-height: 630px;
 }
+.offer-comp .default-image {
+  width: 470px;
+  height: 630px;
+  object-fit: cover;
+}
