@@ -35,14 +35,11 @@ const ModalSignup = ({
     try {
       event.preventDefault();
       if (password === confirmPassword) {
-        const response = await axios.post(
-          "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-          {
-            email,
-            username,
-            password,
-          }
-        );
+        const response = await axios.post("http://localhost:3000/user/signup", {
+          email,
+          username,
+          password,
+        });
         if (response.data.token) {
           setUser(response.data.token);
           setDisplayModalSignup(false);

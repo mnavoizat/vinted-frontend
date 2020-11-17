@@ -15,6 +15,7 @@ const Publish = ({ setDisplayModalLogin }) => {
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
+  const [preview, setPreview] = useState([]);
 
   const formData = new FormData();
 
@@ -23,7 +24,7 @@ const Publish = ({ setDisplayModalLogin }) => {
     if (!token) {
       setDisplayModalLogin(true);
     }
-  }, []);
+  }, [token, setDisplayModalLogin]);
 
   const handleSubmit = async (event) => {
     try {
@@ -40,7 +41,7 @@ const Publish = ({ setDisplayModalLogin }) => {
       formData.append("price", price);
 
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        "http://localhost:3000/offer/publish",
         formData,
         {
           headers: {
@@ -59,15 +60,24 @@ const Publish = ({ setDisplayModalLogin }) => {
       setCondition("");
       setCity("");
       setPrice("");
+      setPreview("");
     } catch (error) {
       console.log(error.message);
       alert("Annonce incorrecte");
     }
   };
 
-  const onDrop = useCallback((acceptedFiles) => {
-    setPicture(acceptedFiles);
-  }, []);
+  const urlPreview = [...preview];
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      setPicture(acceptedFiles);
+      acceptedFiles.map((file) => {
+        return urlPreview.push(URL.createObjectURL(file));
+      });
+      setPreview(urlPreview);
+    },
+    [urlPreview]
+  );
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
@@ -84,13 +94,15 @@ const Publish = ({ setDisplayModalLogin }) => {
             /> </div>*/}
           <div {...getRootProps()}>
             <input {...getInputProps()} />
-            {picture ? (
-              <p className="fichier">{picture[0].name}</p>
+            {preview.length > 0 ? (
+              preview.map((url, index) => {
+                return <img key={index} src={url} alt="" className="thumb" />;
+              })
             ) : isDragActive ? (
               <p className="drag-drop">Déposez le fichier ici ...</p>
             ) : (
               <p className="drag-drop">
-                Faites glisser et déposez le fichier ici, ou cliquez pour
+                Faites glisser et déposez les fichiers ici, ou cliquez pour
                 sélectionner un fichier
               </p>
             )}

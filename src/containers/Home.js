@@ -16,7 +16,6 @@ const Home = ({ search }) => {
   if (!page) {
     page = 1;
   }
-
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [pageTot, setPageTot] = useState(1);
@@ -25,9 +24,9 @@ const Home = ({ search }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=15&title=${search.keyWord}&priceMin=${search.priceMin}&priceMax=${search.priceMax}&sort=${search.sort}`
+          `http://localhost:3000/offers?page=${page}&limit=15&title=${search.keyWord}&priceMin=${search.priceMin}&priceMax=${search.priceMax}&sort=${search.sort}`
         );
-
+        console.log(response.data);
         setArticles(response.data.offers);
         setPageTot(response.data.count);
         setIsLoading(false);

@@ -18,12 +18,14 @@ const Article = ({ article }) => {
           <div>{article.owner.account.username}</div>
         </div>
         <div className="picture">
-          <img src={article.product_image.secure_url} alt="" />
+          {article.product_image && (
+            <img src={article.product_image.secure_url} alt="" />
+          )}
         </div>
         <div className="infos">
           <div className="price">{article.product_price} €</div>
           <div>{article.product_details[1].TAILLE}</div>
-          <div>{article.product_details[0].MARQUE}</div>
+          <div>{article.product_name}</div>
         </div>
       </Link>
     </div>

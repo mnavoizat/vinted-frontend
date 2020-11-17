@@ -3,9 +3,11 @@ import "./index.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import userLogo from "../../../assets/user-logo.jpg";
+import { useHistory } from "react-router-dom";
 
 const OfferComp = ({ article }) => {
   console.log(article);
+  let history = useHistory();
   return (
     <div className="offer-comp">
       <div className="container">
@@ -21,11 +23,13 @@ const OfferComp = ({ article }) => {
               })}
             </Carousel>
           ) : (
-            <img
-              className="default-image"
-              src={article.product_image.secure_url}
-              alt=""
-            />
+            article.product_image && (
+              <img
+                className="default-image"
+                src={article.product_image.secure_url}
+                alt=""
+              />
+            )
           )}
         </div>
         <div className="infos">
@@ -54,7 +58,16 @@ const OfferComp = ({ article }) => {
               <span className="style2">{article.owner.account.username}</span>
             </div>
           </div>
-          <button>Acheter</button>
+          <button
+            onClick={() => {
+              history.push("/payment", {
+                title: article.product_name,
+                amount: article.product_price * 100,
+              });
+            }}
+          >
+            Acheter
+          </button>
         </div>
       </div>
     </div>

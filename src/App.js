@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Cookie from "js-cookie";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import Header from "./components/Transverse/Header";
 import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -18,6 +21,10 @@ import {
   faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch, faTimes, faEye, faCaretLeft, faCaretRight, faCaretDown);
+
+const stripePromise = loadStripe(
+  "pk_test_51HoVjOB86zpR9zzWGy578MLE5ChDx46zISEgJt6qCisronXPcpfxrO6jZpyjVCNgaiUiicv1pmWYWw4m6gLbwUM600X9kn55aw"
+);
 
 function App() {
   const [search, setSearch] = useState({
@@ -50,6 +57,11 @@ function App() {
         setDisplayModalLogin={setDisplayModalLogin}
       />
       <Switch>
+        <Route path="/payment">
+          <Elements stripe={stripePromise}>
+            <Payment setDisplayModalLogin={setDisplayModalLogin} />
+          </Elements>
+        </Route>
         <Route path="/publish">
           <Publish setDisplayModalLogin={setDisplayModalLogin} />
         </Route>
