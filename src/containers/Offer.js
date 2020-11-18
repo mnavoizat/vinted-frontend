@@ -16,7 +16,9 @@ const Offer = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/offer/${id}`);
+        const response = await axios.get(
+          `https://vinted-backend.herokuapp.com/offer/${id}`
+        );
         setArticle(response.data);
         setIsLoading(false);
       } catch (error) {

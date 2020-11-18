@@ -36,11 +36,14 @@ const Payment = ({ setDisplayModalLogin }) => {
     // Une fois le token reçu depuis l'API Stripe
     // Requête vers notre serveur
     // On envoie le token reçu depuis l'API Stripe
-    const response = await axios.post("http://localhost:3000/pay", {
-      stripeToken,
-      amount,
-      title,
-    });
+    const response = await axios.post(
+      "https://vinted-backend.herokuapp.com/pay",
+      {
+        stripeToken,
+        amount,
+        title,
+      }
+    );
     console.log(response.data);
     // Si la réponse du serveur est favorable, la transaction a eu lieu
     if (response.data.status === "succeeded") {
@@ -59,11 +62,11 @@ const Payment = ({ setDisplayModalLogin }) => {
             <div>
               <div className="line-payment">
                 <span> Commande: {title}</span>
-                <span>{amount / 100} €</span>
+                <span>{Number(amount / 100).toFixed(2)} €</span>
               </div>
               <div className="line-payment">
                 <span>Frais protection acheteurs</span>
-                <span>0.40 €</span>
+                <span>{Number(amount / 10000).toFixed(2)} €</span>
               </div>
               <div className="line-payment">
                 <span>Frais de port</span>
@@ -74,7 +77,9 @@ const Payment = ({ setDisplayModalLogin }) => {
           <div className="sous-block-payment">
             <div className="line-payment">
               <span>Total</span>
-              <span>{amount / 100 + 0.4 + 0.8} €</span>
+              <span>
+                {Number(amount / 100 + amount / 10000 + 0.8).toFixed(2)} €
+              </span>
             </div>
             <form className="card-element" onSubmit={handleSubmit}>
               <div className="line-payment">

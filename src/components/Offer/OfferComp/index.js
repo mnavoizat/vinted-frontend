@@ -11,7 +11,7 @@ const OfferComp = ({ article }) => {
   return (
     <div className="offer-comp">
       <div className="container">
-        <div>
+        <div className="pictures-offer">
           {article.product_pictures.length !== 0 ? (
             <Carousel className="carousel" showThumbs="false">
               {article.product_pictures.map((element, index) => {

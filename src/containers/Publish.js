@@ -30,7 +30,11 @@ const Publish = ({ setDisplayModalLogin }) => {
     try {
       event.preventDefault();
 
-      formData.append("picture", picture[0]);
+      for (let i = 0; i < picture.length; i++) {
+        formData.append("picture", picture[i]);
+      }
+      //formData.append("picture", picture[0]);
+
       formData.append("title", title);
       formData.append("description", description);
       formData.append("brand", brand);
@@ -41,7 +45,7 @@ const Publish = ({ setDisplayModalLogin }) => {
       formData.append("price", price);
 
       const response = await axios.post(
-        "http://localhost:3000/offer/publish",
+        "https://vinted-backend.herokuapp.com/offer/publish",
         formData,
         {
           headers: {
@@ -49,7 +53,9 @@ const Publish = ({ setDisplayModalLogin }) => {
           },
         }
       );
-      console.log(response.data);
+
+      console.log(response);
+
       alert("Votre annonce a bien été publiée");
       setPicture("");
       setTitle("");
@@ -70,13 +76,17 @@ const Publish = ({ setDisplayModalLogin }) => {
   const urlPreview = [...preview];
   const onDrop = useCallback(
     (acceptedFiles) => {
-      setPicture(acceptedFiles);
+      console.log(acceptedFiles);
+      const newPicture = [...picture];
+      newPicture.push(acceptedFiles[0]);
+      console.log(newPicture);
+      setPicture(newPicture);
       acceptedFiles.map((file) => {
         return urlPreview.push(URL.createObjectURL(file));
       });
       setPreview(urlPreview);
     },
-    [urlPreview]
+    [urlPreview, picture]
   );
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 

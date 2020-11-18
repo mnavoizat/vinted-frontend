@@ -25,10 +25,13 @@ const ModalLogin = ({
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await axios.post("http://localhost:3000/user/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://vinted-backend.herokuapp.com/user/login",
+        {
+          email,
+          password,
+        }
+      );
       if (response.data.token) {
         setUser(response.data.token);
         setDisplayModalLogin(false);

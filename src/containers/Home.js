@@ -24,7 +24,7 @@ const Home = ({ search }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/offers?page=${page}&limit=15&title=${search.keyWord}&priceMin=${search.priceMin}&priceMax=${search.priceMax}&sort=${search.sort}`
+          `https://vinted-backend.herokuapp.com/offers?page=${page}&limit=5&title=${search.keyWord}&priceMin=${search.priceMin}&priceMax=${search.priceMax}&sort=${search.sort}`
         );
         console.log(response.data);
         setArticles(response.data.offers);
