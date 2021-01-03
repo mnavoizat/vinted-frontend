@@ -6,6 +6,10 @@ Une application web pour pour acheter ou vendre des vêtements de seconde main
 - React
 - React-router-dom
 - Axios
+- js-cookie
+- stripe-js / react-stripe-js
+- react-dropzone
+- react-loader-spinner
 
 ## Projet backend
 Le projet backend associé se trouve à l'adresse suivante: https://github.com/mnavoizat/vinted
