@@ -1,6 +1,6 @@
 # Vinted clone (frontend: React / backend: Node.js)
 ## Description
-Une application web pour pour acheter ou vendre des vêtements de seconde main
+Vinted est une application web pour pour acheter ou vendre des vêtements de seconde main. Dans le cadre de ma formation, j'ai été amené à développer un clone de ce site en React.
 
 ## Packages utilisés
 - React
